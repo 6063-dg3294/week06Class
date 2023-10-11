@@ -25,6 +25,15 @@ class Asteroid{
     }
       
   }
+
+  draw(){
+    noStroke();
+    fill(this.color);
+    rect(this.x,this.y,50,15);
+  }
+
+
+
 }
 
 // _color is a variable
@@ -59,7 +68,15 @@ function draw(){
   noStroke();
   fill(this.color)
   rect(this.x, this.y, 50, 15)
-}
+
+  for (let i = 0; i < asteroidArray.length; i+=1){
+      let anAsteroid = new Asteroid();
+      asteroidArray.push(anAsteroid);
+  }
+  }
+
+
+
 
 
 let spaceship0;
@@ -82,6 +99,7 @@ function setup() {
     asteroidArray.push(myAsteroid);
   }
   spaceship0 = new Spaceship("steel")
+  spaceship1 = new Spaceship("lightsteelblue")
 }
 
 function draw() {
@@ -91,6 +109,10 @@ function draw() {
   for (let i = 0; i < asteroidArray.length; i += 1) {
     let myAsteroid = asteroidArray[i];
     myAsteroid.update();
+    anAsteroid.draw()
+
+
+
 
     // draw circles
     ellipse(myAsteroid.x, myAsteroid.y, 2 * myAsteroid.r, 2 * myAsteroid.r);
@@ -102,4 +124,12 @@ function draw() {
       myAsteroid.x = 0 - myAsteroid.r;
     }
   }
+
+  // update their positions
+  spaceship0.update();
+  spaceship1.update();
+
+  spaceship0.draw();
+  spaceship1.draw();
+
 }
